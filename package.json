@@ -1,0 +1,83 @@
+{
+  "name": "@webship/workspace-acquia",
+  "version": "1.0.0",
+  "description": "Acquia Cloud Platform for Webship Workspace: the ACQUIA menu on every site row, environments and live URLs, get database and files, deploy an artifact, logs and notifications, link from the command line. A provider of @webship/workspace-hosting.",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "private": true,
+  "license": "ISC",
+  "repository": "github:webship/workspace-acquia",
+  "files": [
+    "dist/src",
+    "commands",
+    "config",
+    "features",
+    "scripts",
+    "README.md",
+    "ddev",
+    "host-mounts.txt"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "workspacePlugin": {
+    "name": "acquia",
+    "label": "Acquia Cloud",
+    "settingsFile": "plugin.acquia.settings.yml",
+    "settingsTemplate": "config/plugin.acquia.settings.yml",
+    "labels": "config/settings.labels.yml",
+    "legacySettingsKey": "acquia",
+    "typeActions": {
+      "acquia": [
+        "sites"
+      ]
+    },
+    "commands": {
+      "types": [
+        "sites"
+      ],
+      "workspaces": [
+        "dev",
+        "test",
+        "demos",
+        "sandboxes",
+        "projects"
+      ],
+      "files": [
+        "commands/cmd-tools-acquia.sh"
+      ]
+    },
+    "scripts": {
+      "functions": [
+        "scripts/functions/fun-acquia.sh",
+        "scripts/functions/fun-acquia-tool.sh"
+      ],
+      "args": [
+        "scripts/args/arg-acquia.sh"
+      ],
+      "hostInstall": "scripts/host-install.sh"
+    },
+    "features": [
+      "features/acquia.feature"
+    ],
+    "ddev": {
+      "compose": [
+        "ddev/docker-compose.acquia-cli.yaml"
+      ],
+      "hostMounts": [
+        "~/.acquia"
+      ]
+    }
+  },
+  "dependencies": {
+    "@webship/workspace-hosting": "github:webship/workspace-hosting#1.0.x"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@webship/workspace-plugin-api": "github:webship/workspace-plugin-api#1.0.x",
+    "typescript": "^5.9.0"
+  }
+}

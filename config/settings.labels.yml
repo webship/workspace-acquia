@@ -1,0 +1,7 @@
+# Labels for core/config/plugin.acquia.settings.yml, merged into the Settings page.
+api_key:
+  label: Acquia API key
+  info: 'The key of an API token from cloud.acquia.com (Account → API tokens). Read by acli as ACLI_KEY.'
+api_secret:
+  label: Acquia API secret
+  info: 'The secret of that token. Read by acli as ACLI_SECRET.'

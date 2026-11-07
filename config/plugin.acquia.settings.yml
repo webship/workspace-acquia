@@ -1,0 +1,7 @@
+# Acquia Cloud — core/config/plugin.acquia.settings.yml
+#
+# The Acquia CLI inside the dashboard container. An API key and secret from cloud.acquia.com → Account → API tokens; injected only into Acquia jobs, never printed.
+# The key of an API token from cloud.acquia.com (Account → API tokens). Read by acli as ACLI_KEY.
+api_key: CHANGE_ME
+# The secret of that token. Read by acli as ACLI_SECRET.
+api_secret: CHANGE_ME
