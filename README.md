@@ -1,9 +1,9 @@
-# @webship/workspace-acquia
+# @webship.co/workspace-acquia
 
 Acquia Cloud for the [Webship Workspace](https://github.com/webship/workspace) dashboard: the **ACQUIA**
 menu on every site row, a live-site chip on the project card, "Link to Acquia Cloud" when a new folder is
 made, and the `cmd-tools-acquia.sh` command in every site workspace. A provider of
-[`@webship/workspace-hosting`](https://github.com/webship/workspace-hosting), which draws the menu,
+[`@webship.co/workspace-hosting`](https://github.com/webship/workspace-hosting), which draws the menu,
 the environments modal, the get-database-and-files flow and the New-folder section for every host.
 
 The link is `acli link` (it writes `.acquia-cli.yml` for acli and `.acquia/workspace.yml` for the dashboard); environments come from the Cloud API through acli; the pulls are `acli pull:db --no-import` into `ddev import-db` and `acli pull:files`; a deploy is `acli push:artifact`. The dashboard container reaches Acquia with an API key and secret (`ACLI_KEY`/`ACLI_SECRET`), the host with its own `acli auth:login`.
