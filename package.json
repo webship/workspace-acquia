@@ -1,6 +1,6 @@
 {
   "name": "@webship.co/workspace-acquia",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0",
   "description": "Acquia Cloud Platform for Webship Workspace: the ACQUIA menu on every site row, environments and live URLs, get database and files, deploy an artifact, logs and notifications, link from the command line. A provider of @webship.co/workspace-hosting.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -75,11 +75,11 @@
     }
   },
   "dependencies": {
-    "@webship.co/workspace-hosting": "^1.0.0-rc1"
+    "@webship.co/workspace-hosting": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "@webship.co/workspace-plugin-api": "^1.0.0-rc1",
+    "@webship.co/workspace-plugin-api": "^1.0.0",
     "typescript": "^5.9.0"
   },
   "publishConfig": {
