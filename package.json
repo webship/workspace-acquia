@@ -28,6 +28,23 @@
   "workspacePlugin": {
     "name": "acquia",
     "label": "Acquia Cloud",
+    "needs": {
+      "plugins": [
+        [
+          "dev",
+          "test",
+          "demos",
+          "sandboxes",
+          "projects"
+        ]
+      ],
+      "commands": [
+        {
+          "command": "acli",
+          "hint": "https://docs.acquia.com/acquia-cli/install"
+        }
+      ]
+    },
     "settingsFile": "plugin.acquia.settings.yml",
     "settingsTemplate": "config/plugin.acquia.settings.yml",
     "labels": "config/settings.labels.yml",
