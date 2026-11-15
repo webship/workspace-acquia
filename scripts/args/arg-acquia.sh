@@ -23,15 +23,15 @@ parser.add_argument('-s', '--select',
 parser.add_argument('-D', '--pull-db',
                     action='store_true',
                     default=False,
-                    help='Download the selected environment's database (acli pull:db --no-import) and import it into DDEV. REPLACES the local database — the current one is exported to backups/ first. Client data.')
+                    help='Download the selected environment\'s database (acli pull:db --no-import) and import it into DDEV. REPLACES the local database — the current one is exported to backups/ first. Client data.')
 parser.add_argument('-F', '--pull-files',
                     action='store_true',
                     default=False,
-                    help='Sync the selected environment's public files into the local docroot (acli pull:files; adds and overwrites, never deletes). Client data.')
+                    help='Sync the selected environment\'s public files into the local docroot (acli pull:files; adds and overwrites, never deletes). Client data.')
 parser.add_argument('-g', '--logs',
                     action='store_true',
                     default=False,
-                    help='Tail the selected environment's logs (acli log:tail).')
+                    help='Tail the selected environment\'s logs (acli log:tail).')
 parser.add_argument('-a', '--activities',
                     action='store_true',
                     default=False,
