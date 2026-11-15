@@ -18,6 +18,12 @@ import { acquiaProvider } from './lib/provider';
 export { acquiaProvider };
 export { acquiaLinkOf } from './lib/link';
 
+/** The AI items the installer places: agents in ai-agents/, skills in ai-skills/, commands in ai-commands/, prompts in ai-prompts/. */
+export const AGENTS: string[] = ['acquia-deployer'];
+export const SKILLS: string[] = ['acquia-hosting'];
+export const AI_COMMANDS: string[] = ['acquia-status'];
+export const PROMPTS: string[] = ['acquia-test-then-deploy'];
+
 export function register(api: PluginApi): void {
   registerHosting(api, acquiaProvider(api));
 }
