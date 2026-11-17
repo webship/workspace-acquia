@@ -43,7 +43,7 @@ function acquia_do_environments() {
   acquia_environments_json "$1" "$2" | python3 -c 'import json,sys
 for e in json.load(sys.stdin):
     d = e.get("active_domain") or e.get("default_domain") or ""
-    print("  %-10s %-24s %-10s %s" % (e.get("name",""), (e.get("label") or "")[:24], e.get("status",""), ("https://"+d) if d else ""))' \
+    print("  %-10s %-24s %-10s %s" % (e.get("name",""), (e.get("label") or "")[:24], e.get("status",""), ("https://"+d) if d else ""))' 2>/dev/null \
     || { echo "  (could not list the environments — check acli auth:info)"; return 1; } ;
 }
 
@@ -112,19 +112,27 @@ function acquia_do_logs() {
 function acquia_do_activities() {
   acli api:applications:notification-list "$2" --limit=10 --no-interaction 2>/dev/null | python3 -c 'import json,sys
 for n in json.load(sys.stdin)[:10]:
-    print("  %-20s %-10s %s" % ((n.get("created_at") or "")[:19], n.get("status",""), n.get("label","")))' \
+    print("  %-20s %-10s %s" % ((n.get("created_at") or "")[:19], n.get("status",""), n.get("label","")))' 2>/dev/null \
     || echo "  (could not list the notifications)" ;
 }
 
 function acquia_status() {
-  local project_path="$1" app="$2";
+  local project_path="$1" app="$2" missing rc=0;
   if [ -z "${app}" ] ; then
     echo "    (find the application UUID with: acli app:list)";
     return 0 ;
   fi
   echo "";
-  acquia_do_environments "${project_path}" "${app}" ;
+  # Without acli or its login nothing below can answer: say once what is missing, in ensure_acquia's
+  # words, and fail. The link above and the console below are known here and still show.
+  if missing="$(ensure_acquia)" ; then
+    acquia_do_environments "${project_path}" "${app}" || rc=1 ;
+  else
+    [ -n "${missing}" ] && sed 's/^/  /' <<< "${missing}" ;
+    rc=1 ;
+  fi
   echo "";
   echo "  Console: https://cloud.acquia.com/a/applications/${app}";
   echo "  Data: --pull-db and --pull-files bring the selected environment down into DDEV; --push deploys an artifact.";
+  return ${rc} ;
 }
