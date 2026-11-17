@@ -30,8 +30,11 @@ bash cmd-tools-acquia.sh <project>          # linked or not, and to what
 - "not linked": say so, with the line it prints. Linking is done once, by the person or when they
   give you the id: `bash cmd-tools-acquia.sh <project> --link <application-uuid>`. Find applications with `acli app:list`.
 - A command that is missing on the machine: stop and say which, with where to get it.
-- The credential is api_key and api_secret in core/config/plugin.acquia.settings.yml. Never read it, print it or copy it. When the provider
-  refuses it, say that this is where it is set.
+- Two credentials, for two places. The command, run in a terminal on the machine, uses the `acli` login
+  of the machine: `acli auth:login` (or ACLI_KEY and ACLI_SECRET in its environment). api_key and api_secret in core/config/plugin.acquia.settings.yml
+  is the dashboard's: its environment lists and its Get database & files. When the command says `acli` is not signed in, give the person
+  `acli auth:login` to run themselves; when the dashboard says its credential is refused, say that the settings
+  file is where it is set. Never read, print or copy either.
 
 ## Read
 
